@@ -3,6 +3,27 @@
 var assert = require('assert');
 var Algorithm = require('..');
 
+describe('Combination', function() {
+  var combination = new Algorithm.Combination();
+
+  describe('#run()', function() {
+    it('should return 1 element array and result is a, b, c, d when input a, b, c, d and select 4 elements', function() {
+      // Arrange
+      var set = ['a', 'b', 'c', 'd'];
+      var selection = 4;
+      var exceptedLength = 1;
+      var exceptedElement = 'a,b,c,d';
+
+      // Act
+      var actual = combination.run(set, selection);
+
+      // Assert
+      assert.equal(exceptedLength, actual.length);
+      assert.equal(exceptedElement, actual.pop());
+    });
+  });
+});
+
 describe('Operator', function() {
   var operator = new Algorithm.Operator();
 
