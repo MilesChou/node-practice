@@ -37,7 +37,7 @@ describe('Combination', function() {
       assert.ok(actual.indexOf(exceptedElement) != -1);
     });
 
-    it('should return 3003 element array and result include "01,05,07,12,14" element when input 15 elements and select 5 elements', function() {
+    it('should return 3003 element array and result include "01,05,07,12,14" element when input 15 number elements and select 5 elements', function() {
       // Arrange
       var set = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'];
       var selection = 5;
@@ -51,6 +51,34 @@ describe('Combination', function() {
       // Assert
       assert.equal(exceptedLength, actual.length, 'Result array length is not equal 3003');
       assert.ok(actual.indexOf(exceptedElement) != -1, 'Result does not inculde "01,05,07,12,14" element');
+    });
+
+    it('should throw error when input 3 elements and select 5 elements', function() {
+      // Arrange
+      var set = ['01', '02', '03'];
+      var selection = 5;
+
+      // Act
+      var combination = new Algorithm.Combination();
+
+      // Assert
+      assert.throws(() => {
+        combination.run(set, selection);
+      }, Error);
+    });
+
+    it('should throw error when input 5 elements and select 0 elements', function() {
+      // Arrange
+      var set = ['a', 'b', 'c', 'd', 'e'];
+      var selection = 0;
+
+      // Act
+      var combination = new Algorithm.Combination();
+
+      // Assert
+      assert.throws(() => {
+        combination.run(set, selection);
+      }, Error);
     });
   });
 });
