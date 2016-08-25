@@ -36,6 +36,22 @@ describe('Combination', function() {
       assert.equal(exceptedLength, actual.length);
       assert.ok(actual.indexOf(exceptedElement) != -1);
     });
+
+    it('should return 3003 element array and result include "01,05,07,12,14" element when input 15 elements and select 5 elements', function() {
+      // Arrange
+      var set = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'];
+      var selection = 5;
+      var exceptedLength = 3003;
+      var exceptedElement = '01,05,07,12,14';
+
+      // Act
+      var combination = new Algorithm.Combination();
+      var actual = combination.run(set, selection);
+
+      // Assert
+      assert.equal(exceptedLength, actual.length, 'Result array length is not equal 3003');
+      assert.ok(actual.indexOf(exceptedElement) != -1, 'Result does not inculde "01,05,07,12,14" element');
+    });
   });
 });
 
