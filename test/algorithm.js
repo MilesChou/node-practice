@@ -4,8 +4,6 @@ var assert = require('assert');
 var Algorithm = require('..');
 
 describe('Combination', function() {
-  var combination = new Algorithm.Combination();
-
   describe('#run()', function() {
     it('should return 1 element array and result is a, b, c, d when input a, b, c, d and select 4 elements', function() {
       // Arrange
@@ -15,11 +13,28 @@ describe('Combination', function() {
       var exceptedElement = 'a,b,c,d';
 
       // Act
+      var combination = new Algorithm.Combination();
       var actual = combination.run(set, selection);
 
       // Assert
       assert.equal(exceptedLength, actual.length);
       assert.equal(exceptedElement, actual.pop());
+    });
+
+    it('should return 10 element array and result include a, c, d when input a, b, c, d, e and select 3 elements', function() {
+      // Arrange
+      var set = ['a', 'b', 'c', 'd', 'e'];
+      var selection = 3;
+      var exceptedLength = 10;
+      var exceptedElement = 'a,c,d';
+
+      // Act
+      var combination = new Algorithm.Combination();
+      var actual = combination.run(set, selection);
+
+      // Assert
+      assert.equal(exceptedLength, actual.length);
+      assert.ok(actual.indexOf(exceptedElement) != -1);
     });
   });
 });
